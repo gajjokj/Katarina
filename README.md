@@ -2,7 +2,7 @@ README.md:
 markdown
 Copiar
 Editar
-# Projeto Nome
+# Layout Katarina
 
 Este é um projeto desenvolvido por **Victor Barreto**. Ele é um exemplo de um site que utiliza HTML, CSS e algumas animações para mostrar como implementar funcionalidades e layouts modernos.
 
