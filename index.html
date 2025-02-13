@@ -1,16 +1,97 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width">
-  <title>replit</title>
-  <link href="style.css" rel="stylesheet" type="text/css" />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Katarina</title>
+
+    <!-- integração css -->
+    <link rel="stylesheet" href="./css/style.css">
 </head>
-
 <body>
-  Hello world
-  <script src="script.js"></script>
-</body>
+    <div class="container">
+        <div class="sec1">
+            <div class="background-image">
+                <img src="./images/background.png" alt="">
+                <div class="caption">
+                    <h5>A LÂMINA SINISTRA</h5>
+                    <h1>KATARINA</h1>
+                    <p>Decisiva em seus julgamentos e letal em combate, Katarina é a assassina de maior calibre de Noxus. Filha mais velha do lendário General Du Couteau, Katarina é reconhecida por seus assassinatos eficientes contra inimigos desavisados. Sua ambição ardente a levou a buscar alvos extremamente protegidos, mesmo correndo o risco de colocar seus aliados em perigo; mas não importa a missão, Katarina não hesita ao executar seu dever no meio de um furacão de adagas serrilhadas.</p>
+                </div>
+            </div>
+        </div>
 
+        <div class="sec2">
+            <div class="abilities-wrapper">
+                <div class="abilities">
+                    <h2>Habilidades</h2> <!--png das habilidades-->
+
+                    <div class="ability-list">
+                        <div id="p" class="ability-item active">
+                            <img src="./images/katarinaPassive.png" alt="">
+                        </div>
+                        <div id="q" class="ability-item">
+                            <img src="./images/katarinaQ.png" alt="">
+                        </div>
+                        <div id="w" class="ability-item">
+                            <img src="./images/KatarinaW.png" alt="">
+                        </div>
+                        <div id="e" class="ability-item">
+                            <img src="./images/KatarinaE.png" alt="">
+                        </div>
+                        <div id="r" class="ability-item">
+                            <img src="./images/KatarinaR.png" alt="">
+                        </div>
+                    </div> 
+
+                    <div class="ability-info">
+                        <p class="ability-info-type">PASSIVA</p>
+                        <h6 class="ability-info-name">VORACIDADE</h6>
+                        <p class="ability-info-desc">Os Tempos de Recarga de Katarina são reduzidos drasticamente sempre que um Campeão que ela havia causado dano recentemente morrer. Se apanhar uma Adaga, Katarina a usa para cortar todos os inimigos próximos, causando Dano Mágico.</p>
+                    </div>
+                </div><!--habilidades com vídeos-->
+
+                 <video id="video" muted loop autoplay>
+                    <source src="./videos/ability_0055_P.webm" type="video/webm">
+                </video>
+            </div>
+        </div>
+    </div>
+
+
+
+    <script>
+        const abilities = {
+            "p" : ["ability_0055_P", "PASSIVA", "VEROCIDADE", "Os Tempos de Recarga de Katarina são reduzidos drasticamente sempre que um Campeão que ela havia causado dano recentemente morrer. Se apanhar uma Adaga, Katarina a usa para cortar todos os inimigos próximos, causando Dano Mágico."],
+            "q" : ["ability_0055_Q", "Q", "LÂMINA SALTITANTE", "Katarina arremessa uma Adaga no alvo. Ela salta em inimigos próximos antes de ricochetear e cair no chão."],
+            "w" : ["ability_0055_W", "W", "PREPARAÇÃO", "Katarina recebe um impulso de Velocidade de Movimento e joga uma Adaga para cima."],
+            "e" : ["ability_0055_E", "E", "SHUNPO", "Katarina desloca-se em direção ao alvo, golpeando-o caso seja inimigo ou golpeando o inimigo mais próximo caso não seja."],
+            "r" : ["ability_0055_R", "R", "LÓTUS DA MORTE", "Katarina gira em torno de si mesma, disparando adagas muito rapidamente e causando muito Dano Mágico nos 3 Campeões inimigos mais próximos.."]
+        }
+
+        document.querySelectorAll(".ability-item").forEach((e) => {
+            e.addEventListener("click", () => {
+                document.querySelectorAll(".ability-item").forEach((ele) => {
+                    ele.classList.remove("active");
+                })
+
+                e.classList.add("active");
+
+                document.getElementById("video").style = "opacity: 0";
+                document.querySelector(".ability-info").style = "opacity: 0";
+
+                setTimeout(() => {
+                    document.getElementById("video").src = "./videos/" + abilities[e.id][0] + ".webm";
+                    document.querySelector(".ability-info-type").innerHTML = abilities[e.id][1];
+                    document.querySelector(".ability-info-name").innerHTML = abilities[e.id][2];
+                    document.querySelector(".ability-info-desc").innerHTML = abilities[e.id][3];
+
+                    document.getElementById("video").style = "opacity: 1";
+                    document.querySelector(".ability-info").style = "opacity: 1";
+                }, 250)
+            })
+        })
+    </script>
+</body>
 </html>
